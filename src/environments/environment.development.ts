@@ -3,4 +3,6 @@ export const environment = {
     apiUrl: 'http://localhost:8080',
     apiRoles: 'api/roles',
     apiEmpleados: 'api/empleados',
+    apiProyectos: 'api/proyectos',
+    apiDocumentos: 'api/documentos',
 };

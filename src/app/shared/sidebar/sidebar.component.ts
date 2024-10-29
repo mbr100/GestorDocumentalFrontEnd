@@ -18,8 +18,16 @@ export class SidebarComponent {
         this.router.navigateByUrl('/mantenimientos/roles').then(r => console.log('irGestionRoles', r));
     }
 
-    public irGestionEmpleados() {
+    public irGestionEmpleados(): void {
         this.router.navigateByUrl('/mantenimientos/empleados').then(r => console.log('irGestionRoles', r));
 
+    }
+
+    public irGestionProyectos(): void {
+        this.router.navigateByUrl('/mantenimientos/proyectos').then(r => console.log('irGestionRoles', r));
+    }
+
+    public irProyectos(): void {
+        this.router.navigateByUrl('/proyectos').then(r => console.log('irGestionRoles', r));
     }
 }

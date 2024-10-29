@@ -1,0 +1,88 @@
+@if (!agregarProyecto){
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                        <h4 class="card-title">Proyectos</h4>
+                        <h6 class="card-subtitle">Proyectos dados de alta en la aplicación</h6>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-outline-primary float-right" (click)="nuevoProyecto()">
+                            <i class="fa fa-plus"></i> Nuevo Proyecto
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="col-1">ID Proyecto</th>
+                            <th class="col-1">titulo</th>
+                            <th class="col-1">Año</th>
+                            <th class="col-1">Clientes</th>
+                            <th class="col-2">Empleados</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @for (proyecto of listaProyectos; track proyecto.idProyecto){
+                                <tr (click)="asignarEmpleadosProyecto(proyecto.idProyecto)">
+                                    <td>{{proyecto.idProyecto}}</td>
+                                    <td>{{proyecto.titulo}}</td>
+                                    <td>{{proyecto.ano}}</td>
+                                    <td>{{proyecto.cliente}}</td>
+                                    <td><app-mostrar-empleados [empleados]="proyecto.empleadoProyecto"></app-mostrar-empleados></td>
+                                </tr>
+
+                                @if (asginarEmpleado && idProyectoAsignar == proyecto.idProyecto){
+                                    <tr>
+                                        <td colspan="5">
+                                            <app-asignar-empleados [proyecto]="proyecto"></app-asignar-empleados>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+} @else {
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-10">
+                        <h4 class="card-title">Nuevo Proyecto</h4>
+                        <h6 class="card-subtitle">Añadir Nuevo Proyecto</h6>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-outline-primary float-right" (click)="nuevoProyecto()">
+                            <i class="fa fa-minus"></i> Cancelar Nuevo Proyecto
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="formProyecto" (ngSubmit)="guardarProyecto()">
+                    <div class="form-group">
+                        <label for="titulo">Titulo</label>
+                        <input type="text" class="form-control" id="titulo" formControlName="titulo">
+                    </div>
+                    <div class="form-group">
+                        <label for="ano">Año</label>
+                        <input type="number" class="form-control" id="ano" formControlName="ano">
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente">Titulo</label>
+                        <input type="text" class="form-control" id="cliente" formControlName="cliente">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

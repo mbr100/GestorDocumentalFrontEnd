@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {EmpleadoDTO} from '../../../models/empleado.model';
-import {EmpleadosService} from '../../../services/empleados.service';
+import {EmpleadoDTO} from '../../../../models/empleado.model';
+import {EmpleadosService} from '../../../../services/empleados.service';
 import Swal from 'sweetalert2';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RolesService} from '../../../services/roles.service';
-import {Rol} from '../../../models/rol.model';
+import {RolesService} from '../../../../services/roles.service';
+import {Rol} from '../../../../models/rol.model';
 
 @Component({
   selector: 'app-empleados',

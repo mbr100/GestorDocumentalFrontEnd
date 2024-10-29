@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { RolesService } from '../../../services/roles.service';
-import {editarRolDTO, Rol} from '../../../models/rol.model';
+import { RolesService } from '../../../../services/roles.service';
+import {editarRolDTO, Rol} from '../../../../models/rol.model';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,12 +26,14 @@ export class RolesComponent implements OnInit {
     public eliminarRol(rol: Rol): void {
         this._rolesService.deleteRol(rol).subscribe( {
             next: (data) => {
-                if (data.code === "200") {
-                    this.mostrarMensajeExito('Rol eliminado correctamente');
-                    this.roles = this.roles.filter((rolItem: Rol) => rolItem.rol !== rol.rol);
-                }
+                this.mostrarMensajeExito(data.message);
+                this.roles = this.roles.filter((rolItem: Rol) => rolItem.rol !== rol.rol);
+
             },
-            error: (error: any) => this.mostrarMensajeError(error.error.message)
+            error: (error: any) =>{
+                console.log(error);
+                this.mostrarMensajeError(error.error.message)
+            }
         });
     }
 
@@ -45,15 +47,17 @@ export class RolesComponent implements OnInit {
             this._rolesService.editarRol(editarRol).subscribe({
                 next: (data) => {
                     console.log(data);
-                    if (data.code === '200') {
-                        this.mostrarMensajeExito('Rol editado correctamente');
-                        this.roles = this.roles.map((rolItem: Rol) => rolItem===rol ? { rol: result.value }  : rolItem);
-                    }
+                    this.mostrarMensajeExito('Rol editado correctamente');
+                    this.roles = this.roles.map((rolItem: Rol) => rolItem===rol ? { rol: result.value }  : rolItem);
                 },
-                error: (error: any) => this.mostrarMensajeError(error.error.message)
+                error: (error: any) => {
+                    console.log(error);
+                    this.mostrarMensajeError(error.error.message)
+                }
             });
         });
     }
+
     public nuevoRol(): void {
         Swal.fire({
             title: 'Nuevo Rol',
@@ -63,10 +67,10 @@ export class RolesComponent implements OnInit {
             const nuevoRol = new Rol( result.value);
             this._rolesService.nuevoRol(nuevoRol).subscribe({
                 next: (data) => {
-                    if (data.code === "201") {
-                        this.mostrarMensajeExito('Rol creado correctamente');
-                        this.roles = this.roles.concat(nuevoRol);
-                    }
+                    console.log(data);
+                    this.mostrarMensajeExito(data.message);
+                    this.roles = this.roles.concat(nuevoRol);
+
                 },
                 error: (error: any) => this.mostrarMensajeError(error.error.message)
             });

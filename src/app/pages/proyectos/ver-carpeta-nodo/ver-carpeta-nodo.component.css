@@ -1,0 +1,78 @@
+.node {
+    margin-left: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.2s, border 0.2s;
+}
+
+.node.drag-over {
+    background-color: #e0e0e0; /* Color de fondo para indicar zona de arrastre */
+    border: 2px dashed #a0a0a0; /* Borde para destacar la zona */
+    border-radius: 4px;
+}
+
+.node > div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.node .file {
+    color: #4a4a4a;
+    padding-left: 16px;
+    font-style: italic;
+}
+
+.children {
+    margin-left: 15px;
+    padding-left: 10px;
+    border-left: 1px solid #cccccc;
+}
+
+.node .file:hover, .node > div:hover {
+    background-color: #f0f0f0;
+    border-radius: 3px;
+}
+
+.node > div::before {
+    content: "📁";
+    margin-right: 5px;
+}
+
+.node .file::before {
+    content: "📄";
+    margin-right: 5px;
+}
+
+.button-container {
+    display: flex; /* Utiliza flexbox para alinear los botones en fila */
+    gap: 10px; /* Espacio entre los botones */
+    margin-left: 10px; /* Espacio a la izquierda */
+}
+
+.round-button {
+    width: 30px; /* Cambia a un ancho más pequeño */
+    height: 30px; /* Cambia a una altura más pequeña */
+    border-radius: 50%; /* Hacer los botones redondos */
+    display: flex; /* Para centrar el contenido */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    padding: 0; /* Sin padding adicional */
+    font-size: 16px; /* Ajusta el tamaño del icono si es necesario */
+}
+
+.round-button:hover {
+    background-color: transparent; /* Mantener el fondo transparente en hover */
+}
+
+.round-button.btn-outline-success:hover {
+    color: #ffffff; /* Cambiar color de texto a blanco al pasar el mouse */
+    background-color: #28a745; /* Color de fondo verde */
+}
+
+.round-button.btn-outline-danger:hover {
+    color: #ffffff; /* Cambiar color de texto a blanco al pasar el mouse */
+    background-color: #dc3545; /* Color de fondo rojo */
+}
