@@ -1,0 +1,108 @@
+@if (!nuevoPuntoNC) {
+    @if (puntoNoConformidadSeleccionado === 0){
+        <div class="row">
+            <!-- Apartado de No Conformidades Abiertas -->
+            <div class="col-2 pe-3 custom-border text-nowrap">
+
+                <h5 class="text-nowrap ">No Conformidades Abiertas</h5>
+                @if (abiertas.length > 0) {
+                    <div>
+                        @for (nc of abiertas; track nc) {
+                            <div class="mb-2">
+                                @if (nc.id === idNoConformidad) {
+                                    <button class="btn btn-rounded btn-primary w-100 text-center" (click)="seleccionarNoConformidad(nc.id)">
+                                        {{nc.tipoNc}}_{{nc.id}}
+                                    </button>
+                                } @else {
+                                    <button class="btn btn-rounded btn-outline-primary w-100 text-center" (click)="seleccionarNoConformidad(nc.id)">
+                                        {{nc.tipoNc}}_{{nc.id}}
+                                    </button>
+                                }
+                            </div>
+                        }
+                    </div>
+                } @else {
+                    <p >No hay NC abiertas.</p>
+                }
+
+                @if (cerradas.length > 0) {
+                    <h5 class="text-nowrap text-center">No Conformidades Cerradas</h5>
+                    <div>
+                        @for (nc of cerradas; track nc) {
+
+                            <div class="mb-2">
+                                @if (nc.id === idNoConformidad) {
+                                    <button class="btn btn-rounded btn-secondary w-100 text-center" (click)="seleccionarNoConformidad(nc.id)">
+                                        {{nc.tipoNc}}_{{nc.id}}
+                                    </button>
+                                } @else {
+                                    <button class="btn btn-rounded btn-outline-secondary w-100 text-center" (click)="seleccionarNoConformidad(nc.id)">
+                                        {{nc.tipoNc}}_{{nc.id}}
+                                    </button>
+                                }
+                            </div>
+
+                        }
+                    </div>
+                }
+
+                <h5 class="text-nowrap ">Abrir Nc</h5>
+                <div>
+                    <button class="btn btn-rounded btn-outline-primary w-100 text-center" data-toggle="modal" data-target="#nuevaNcModal">
+                        Nueva NC
+                    </button>
+                </div>
+            </div>
+            <!-- Barra separadora -->
+
+            <div class="col-10">
+                @if (ncSeleccionada) {
+                    <p>Nc seleccioando {{idNoConformidad}}</p>
+                    @for (puntonc of verPuntosNc?.puntosNoConformidades; track puntonc; let  i = $index) {
+                        <app-ver-punto-no-conformidad [puntoNc]="puntonc" [indice]="i" (puntoNoConformidadSeleccionado)="verPuntoNoConfomidad($event)"></app-ver-punto-no-conformidad>
+                    }
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-rounded btn-outline-primary" (click)="abrirPuntoNC()" >Nuevo Punto NC</button>
+                        </div>
+                    </div>
+
+                } @else {
+                    <p class="text-center">Seleccione una No Conformidad para ver su detalle.</p>
+                }
+            </div>
+        </div>
+    } @else {
+        <div class="col">
+            <div class=" d-flex justify-content-end">
+                <button class="btn btn-outline-inverse" (click)="volverNoConformidadesProyecto()" >Volver</button>
+            </div>
+            <br>
+            <app-ver-contenido-no-conformidad [puntoNCSeleccionado]="verContenidoNC" (puntoNCRespondido)="recargarNC($event)" ></app-ver-contenido-no-conformidad>
+        </div>
+    }
+}
+@if (nuevoPuntoNC) {
+    <app-crear-punto-no-conformidad [idNoConformidad]="idNoConformidad" [idProyecto]="idProyecto" (puntoNoConformidadCreado)="recargarNC($event)"
+                                    (cancelarCreacion)="cancelarNuevoPunto($event)"></app-crear-punto-no-conformidad>
+}
+
+
+<!-- Modal -->
+<div class="modal fade" id="nuevaNcModal" #nuevaNcModal tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Seleccione el Tipo de NC a abrir</h5>
+            </div>
+            <div class="modal-body">
+                @for (tipoNc of tiposNc; track tipoNc) {
+                    <button class="btn btn-rounded btn-outline-primary w-100 text-center mt-2" (click)="crearNuevaNc(tipoNc)">
+                        {{tipoNc}}
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="node" (dragover)="onDragOver($event)" (drop)="onDrop($event, nodo.nombre)" (dragleave)="onDragLeave($event)" [ngClass]="{ 'drag-over': isDragOver }" >
+    @if (nodo.tipo !== 'fichero') {
+        <div (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">{{ nodo.nombre }}</div>
+    }
+    @if (nodo.tipo === 'fichero') {
+        <div class="file">
+            {{ nodo.nombre }}
+            <div class="button-container">
+                <button class="btn btn-outline-success round-button" (click)="aceptarDocumento(nodo)">
+                    <i class="fas fa-check"></i>
+                </button>
+                <button class="btn btn-outline-danger round-button" (click)="rechazarDocumento(nodo)">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+    }
+    @if (nodo.hijos && nodo.hijos.length > 0){
+        @for ( hijo of nodo.hijos; track hijo){
+            <app-ver-carpeta-nodo [nodo]="hijo" [idProyecto]="idProyecto" [nombreCarpetaAlojada]="nodo.nombre"></app-ver-carpeta-nodo>
+        }
+    }
+</div>

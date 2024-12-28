@@ -1,0 +1,17 @@
+@if (documentosProyecto) {
+    <div>
+        <div class="container-fluid animate__animated animate__slideInDown">
+            <div class="row bg-light-primary p-3">
+                <div class="col-6">
+                    <h1 class="text-dark">Proyecto: {{ idProyecto }}</h1>
+                </div>
+                <div class="col-6 d-flex align-items-center justify-content-end">
+                    <button class="btn btn-rounded btn-outline-info m-2" (click)="verNoConformidades()" >Ver NCs</button>
+                    <button class="btn btn-rounded btn-outline-inverse" (click)="volverProyectos()" >Volver</button>
+                </div>
+            </div>
+        </div>
+        <app-ver-carpeta-nodo [nodo]="documentosProyecto.carpeta" [idProyecto]="idProyecto"></app-ver-carpeta-nodo>
+    </div>
+}
+

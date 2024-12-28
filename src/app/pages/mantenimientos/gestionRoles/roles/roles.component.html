@@ -1,0 +1,42 @@
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-10">
+                    <h4 class="card-title">Roles</h4>
+                    <h6 class="card-subtitle">Roles dados de alta en la aplicación</h6>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-outline-primary float-right" (click)="nuevoRol()">
+                        <i class="fa fa-plus"></i> Nuevo
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="col-10">Rol</th>
+                            <th class="text-nowrap text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (rol of roles; track rol){
+                            <tr>
+                                <td>{{rol.rol}}</td>
+                                <td class="text-nowrap">
+                                    <button class="btn btn-outline-warning m-2" (click)="editarRol(rol)" >
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> Editar
+                                    </button>
+                                    <button class="btn btn-outline-danger" (click)="eliminarRol(rol)">
+                                        <i class="fa fa-close text-danger"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

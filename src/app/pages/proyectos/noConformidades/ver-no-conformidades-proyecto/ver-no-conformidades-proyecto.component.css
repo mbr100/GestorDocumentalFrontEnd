@@ -1,0 +1,6 @@
+/* Clase personalizada para el borde negro */
+.custom-border {
+    border-right: 2px solid black; /* Borde negro en el lado derecho */
+    padding: 10px;
+    overflow-x: auto;  /* Permite desplazamiento horizontal en caso de contenido largo */
+}

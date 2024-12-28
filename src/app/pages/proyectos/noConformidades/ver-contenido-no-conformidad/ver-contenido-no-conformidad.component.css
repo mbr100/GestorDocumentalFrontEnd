@@ -1,0 +1,5 @@
+.custom-editor {
+    max-height: 100px; /* Altura para limitar las líneas visibles */
+    overflow-y: auto;  /* Habilitar scroll vertical */
+    line-height: 1.5;  /* Ajustar el espacio entre líneas */
+}

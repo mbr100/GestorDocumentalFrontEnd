@@ -1,0 +1,6 @@
+<div class="mb-2">
+    <button  class="btn btn-rounded w-100 text-start" [ngClass]="puntoNc.estado === estadoAbierta ? 'btn-outline-primary' : 'btn-outline-secondary'" (click)="verPuntoNoConformidadSeleccionado()">
+        <i class="fas fa-eye me-3" style="margin-right: 1rem;"></i>
+        Punto NC {{ indice }}: {{ puntoNc.contenidos[0].contenido | stripHtml }}
+    </button>
+</div>
