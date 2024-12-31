@@ -1,19 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {ListarProyecto} from '../../../../models/proyecto.model';
 import {ProyectosService} from '../../../../services/proyectos.service';
-import {AsignarEmpleadosComponent} from '../asignar-empleados/asignar-empleados.component';
-import {MostrarEmpleadosComponent} from '../mostrar-empleados/mostrar-empleados.component';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {AuthService} from '../../../../services/authService.service';
+import {AsignarEmpleadosComponent} from '../asignar-empleados/asignar-empleados.component';
+import {MostrarEmpleadosComponent} from '../mostrar-empleados/mostrar-empleados.component';
 
 @Component({
     selector: 'app-proyectos',
     standalone: true,
     imports: [
+        ReactiveFormsModule,
         AsignarEmpleadosComponent,
-        MostrarEmpleadosComponent,
-        ReactiveFormsModule
+        MostrarEmpleadosComponent
     ],
     templateUrl: './proyectos.component.html',
     styles: ``
@@ -29,7 +29,7 @@ export class ProyectosComponent implements OnInit {
         this.listaProyectos = [];
         this.asginarEmpleado = false
         this.idProyectoAsignar = "";
-        this.agregarProyecto = true;
+        this.agregarProyecto = false;
         this.formProyecto = this.formBuilder.group({
             titulo: ['', Validators.required],
             ano: ['', Validators.required],

@@ -1,8 +1,10 @@
 export class Rol {
     rol: String;
+    tipoRol: String;
 
-    constructor(rol: String) {
+    constructor(rol: String, tipoRol: String) {
         this.rol = rol;
+        this.tipoRol = tipoRol;
     }
 }
 

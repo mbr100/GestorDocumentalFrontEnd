@@ -1,20 +1,30 @@
 import {Component, OnInit} from '@angular/core';
 import { RolesService } from '../../../../services/roles.service';
-import {editarRolDTO, Rol} from '../../../../models/rol.model';
+import { editarRolDTO, Rol } from '../../../../models/rol.model';
 import Swal from 'sweetalert2';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-roles',
   standalone: true,
-  imports: [],
+    imports: [
+        ReactiveFormsModule,
+        FormsModule
+    ],
   templateUrl: './roles.component.html',
   styles: ``
 })
 export class RolesComponent implements OnInit {
     public roles: Rol[];
+    public nRol: Rol;
+    public darDeAltaRol: boolean;
+    public tipoRol: string[];
 
     constructor(private _rolesService: RolesService) {
         this.roles = [];
+        this.nRol = new Rol('', '');
+        this.darDeAltaRol = false;
+        this.tipoRol = ['ADMINISTRADOR', 'EMPLEADO','CLIENTE'];
     }
 
     public ngOnInit(): void {
@@ -48,7 +58,7 @@ export class RolesComponent implements OnInit {
                 next: (data) => {
                     console.log(data);
                     this.mostrarMensajeExito('Rol editado correctamente');
-                    this.roles = this.roles.map((rolItem: Rol) => rolItem===rol ? { rol: result.value }  : rolItem);
+                    this.roles = this.roles.map((rolItem: Rol) => rolItem === rol ? { ...rolItem, rol: result.value } : rolItem);
                 },
                 error: (error: any) => {
                     console.log(error);
@@ -59,22 +69,7 @@ export class RolesComponent implements OnInit {
     }
 
     public nuevoRol(): void {
-        Swal.fire({
-            title: 'Nuevo Rol',
-            input: 'text',
-            inputLabel: 'Rol'
-        }).then((result) => {
-            const nuevoRol = new Rol( result.value);
-            this._rolesService.nuevoRol(nuevoRol).subscribe({
-                next: (data) => {
-                    console.log(data);
-                    this.mostrarMensajeExito(data.message);
-                    this.roles = this.roles.concat(nuevoRol);
-
-                },
-                error: (error: any) => this.mostrarMensajeError(error.error.message)
-            });
-        });
+        this.darDeAltaRol = true;
     }
 
     private mostrarMensajeExito(mensaje: string): void {
@@ -94,4 +89,22 @@ export class RolesComponent implements OnInit {
     }
 
 
+    public cancelar(): void {
+        this.darDeAltaRol = false;
+    }
+
+    public guardarRol(): void {
+        this._rolesService.nuevoRol(this.nRol).subscribe({
+            next: (data) => {
+                this.mostrarMensajeExito(data.message);
+                this.roles.push(this.nRol);
+                this.darDeAltaRol = false;
+                this.nRol = new Rol('', '');
+            },
+            error: (error: any) => {
+                console.log(error);
+                this.mostrarMensajeError(error.error.message)
+            }
+        })
+    }
 }

@@ -1,0 +1,14 @@
+:host {
+    text-align: left;
+}
+
+button {
+    float: none;
+}
+.text-left {
+    text-align: left !important;
+}
+
+.float-right {
+    float: none !important;
+}

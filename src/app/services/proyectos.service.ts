@@ -26,8 +26,8 @@ export class ProyectosService {
         return this.httpClient.post(`${this.baseUrl}/${this.apiProyectos}`, proyecto);
     }
 
-    public listarProyectosEmpleado(idEmpleado: string): Observable<ListarProyecto[]> {
-        return this.httpClient.get(`${this.baseUrl}/${this.apiProyectos}/listarproyectos/${idEmpleado}`).pipe(map((data: any) => <ListarProyecto[]>data));
+    public listarProyectosEmpleado(): Observable<ListarProyecto[]> {
+        return this.httpClient.get(`${this.baseUrl}/${this.apiProyectos}/listarproyectos`).pipe(map((data: any) => <ListarProyecto[]>data));
     }
 
     public documentosProyectos(idProyecto: string): Observable<any> {

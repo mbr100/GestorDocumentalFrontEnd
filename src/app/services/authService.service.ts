@@ -29,11 +29,24 @@ export class AuthService {
         const token = this.getTokenFromStorage();
         if (token) {
             this.setToken(token);
-            if (!this.validateToken(token)) {
-                console.error('Token no válido');
-                this.logout();
-            }
-            this.router.navigateByUrl('/').then();
+            // Realiza la validación del token de manera diferida
+            setTimeout(() => {
+                this.validateToken(token).subscribe({
+                    next: (isValid) => {
+                        if (!isValid) {
+                            console.error('Token no válido');
+                            this.logout();
+                        }
+                    },
+                    error: (err) => {
+                        console.error('Error al validar el token:', err);
+                        this.logout();
+                    },
+                    complete: () => {
+                        console.log('Validación del token completada');
+                    }
+                });
+            });
         } else {
             this.logout();
         }

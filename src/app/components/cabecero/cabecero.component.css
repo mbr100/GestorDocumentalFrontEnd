@@ -1,0 +1,10 @@
+/* Asegura que los elementos del dropdown no se envuelvan */
+.dropdown-menu.d-flex {
+    flex-wrap: nowrap;
+}
+
+/* Ajusta el padding de los items si es necesario */
+.dropdown-menu .dropdown-item {
+    padding: 0.5rem 1rem;
+}
+

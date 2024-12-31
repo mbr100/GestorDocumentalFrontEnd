@@ -7,16 +7,16 @@ import {RolesService} from '../../../../services/roles.service';
 import {Rol} from '../../../../models/rol.model';
 
 @Component({
-  selector: 'app-empleados',
+  selector: 'app-usuarios',
   standalone: true,
     imports: [
         ReactiveFormsModule,
         FormsModule
     ],
   templateUrl: './usuarios.component.html',
-  styles: ``
+  styleUrl: './usuarios.component.css'
 })
-export class EmpleadosComponent implements OnInit {
+export class UsuariosComponent implements OnInit {
     public usuarios: usuarioDTO[];
     public anadirUsuario: boolean;
     public editarUsuario: boolean;

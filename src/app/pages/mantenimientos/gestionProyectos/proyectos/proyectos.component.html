@@ -31,13 +31,13 @@
                                     <td>{{proyecto.titulo}}</td>
                                     <td>{{proyecto.ano}}</td>
                                     <td>{{proyecto.cliente}}</td>
-                                    <td><app-mostrar-empleados [empleados]="proyecto.empleadoProyecto"></app-mostrar-empleados></td>
+                                    <td><app-mostrar-usuarios [empleados]="proyecto.empleadoProyecto"></app-mostrar-usuarios></td>
                                 </tr>
 
                                 @if (asginarEmpleado && idProyectoAsignar == proyecto.idProyecto){
                                     <tr>
                                         <td colspan="5">
-                                            <app-asignar-empleados [proyecto]="proyecto"></app-asignar-empleados>
+                                            <app-asignar-usuarios [proyecto]="proyecto"></app-asignar-usuarios>
                                         </td>
                                     </tr>
                                 }

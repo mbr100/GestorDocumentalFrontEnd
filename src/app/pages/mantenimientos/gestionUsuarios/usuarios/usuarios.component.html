@@ -26,18 +26,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @for (usu of usuarios; track usu.idUsuario){
+                            @for (usuario of usuarios; track usuario.idUsuario){
                                 <tr>
-                                    <td>{{usu.idUsuario}}</td>
-                                    <td>{{usu.nombre}}</td>
-                                    <td>{{usu.email}}</td>
-                                    <td>{{usu.telefono}}</td>
-                                    <td>{{usu.rol}}</td>
+                                    <td>{{usuario.idUsuario}}</td>
+                                    <td>{{usuario.nombre}}</td>
+                                    <td>{{usuario.email}}</td>
+                                    <td>{{usuario.telefono}}</td>
+                                    <td>{{usuario.rol}}</td>
                                     <td class="text-nowrap">
-                                        <button class="btn btn-outline-warning m-2" (click)="editarInformacionUsuario(usu)" >
+                                        <button class="btn btn-outline-warning m-2" (click)="editarInformacionUsuario(usuario)" >
                                             <i class="fa fa-pencil text-inverse m-r-10"></i> Editar
                                         </button>
-                                        <button class="btn btn-outline-danger" (click)="eliminarUsuario(usu)">
+                                        <button class="btn btn-outline-danger" (click)="eliminarUsuario(usuario)">
                                             <i class="fa fa-close text-danger"></i> Eliminar
                                         </button>
                                     </td>

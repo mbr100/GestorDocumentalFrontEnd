@@ -7,7 +7,7 @@ import {ProyectosService} from '../../../../services/proyectos.service';
 import Swal from 'sweetalert2';
 
 @Component({
-    selector: 'app-asignar-empleados',
+    selector: 'app-asignar-usuarios',
     standalone: true,
     imports: [
         FormsModule
@@ -31,7 +31,7 @@ export class AsignarEmpleadosComponent implements OnInit {
         this.empleadoService.getUsuario().subscribe({
             next: (empleados: UsuarioProyectoDTO[]) => {
                 this.empleados = empleados;
-                // Asigna a gestorProyectos, gestorExpertos y comercial después de cargar `empleados`
+                // Asigna a gestorProyectos, gestorExpertos y comercial después de cargar `usuarios`
                 this.proyecto.empleadoProyecto.forEach((empleadoProyecto) => {
                     if (empleadoProyecto.rol === 'Gestor de proyectos') {
                         this.gestorProyectos = this.empleados.find(e => e.nombre === empleadoProyecto.nombre) || empleadoProyecto;
@@ -45,7 +45,7 @@ export class AsignarEmpleadosComponent implements OnInit {
                 });
             },
             error: (error) => {
-                console.log("Error al cargar empleados:", error);
+                console.log("Error al cargar usuarios:", error);
             }
         });
     }

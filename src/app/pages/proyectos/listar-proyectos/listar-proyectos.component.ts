@@ -4,6 +4,7 @@ import { ProyectosService } from '../../../services/proyectos.service';
 import { AuthService } from '../../../services/authService.service';
 import { Router } from '@angular/router';
 import {Usuario} from '../../../models/usuario.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-proyectos',
@@ -25,12 +26,17 @@ export class ListarProyectosComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.proyectosService.listarProyectosEmpleado(this.user?.idUsuario!).subscribe((proyectos: ListarProyectoEmpleado[]) => {
-            this.listaProyectos = proyectos;
+        this.proyectosService.listarProyectosEmpleado().subscribe({
+            next: (proyectos: ListarProyectoEmpleado[]) => {
+                this.listaProyectos = proyectos;
+            },
+            error: (err) => {
+                Swal.fire('Error', 'No se han podido cargar los proyectos' + err, 'error').then();
+            }
         });
     }
 
     public verDocumentosProyecto(idProyecto: string) {
-        this.router.navigateByUrl(`/proyectos/${idProyecto}/documentos`);
+        this.router.navigateByUrl(`/proyectos/${idProyecto}/documentos`).then();
     }
 }

@@ -2,11 +2,27 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand ms-3" routerLink="/" aria-label="Home" style="cursor: pointer; color:" >
+    <a class="navbar-brand ms-3" routerLink="/" aria-label="Home" style="cursor: pointer;" >
         <div class="row">
             <h1 class="ms-2" style="color: white">
                 <img src="favicon.ico" alt="logo" height="50" width="50"> Gestor Documental
             </h1>
         </div>
     </a>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Administración
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a (click)="irGestionRoles()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Roles</a></li>
+                    <li><a (click)="irGestionUsuarios()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Usuarios</a></li>
+                    <li><a (click)="irGestionProyectos()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Proyectos</a></li>
+
+
+                </ul>
+            </li>
+        </ul>
+    </div>
 </nav>

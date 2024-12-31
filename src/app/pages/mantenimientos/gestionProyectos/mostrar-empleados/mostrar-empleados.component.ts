@@ -2,7 +2,7 @@ import {Component, Input } from '@angular/core';
 import {UsuarioProyectoDTO} from '../../../../models/usuario.model';
 
 @Component({
-  selector: 'app-mostrar-empleados',
+  selector: 'app-mostrar-usuarios',
   standalone: true,
   imports: [],
   templateUrl: './mostrar-empleados.component.html',
