@@ -9,20 +9,20 @@
             </h1>
         </div>
     </a>
-    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Administración
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a (click)="irGestionRoles()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Roles</a></li>
-                    <li><a (click)="irGestionUsuarios()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Usuarios</a></li>
-                    <li><a (click)="irGestionProyectos()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Proyectos</a></li>
-
-
-                </ul>
-            </li>
-        </ul>
-    </div>
+    @if (this.puedeAdministrar()){
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Administración
+                    </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a (click)="irGestionRoles()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Roles</a></li>
+                            <li><a (click)="irGestionUsuarios()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Usuarios</a></li>
+                            <li><a (click)="irGestionProyectos()" style="cursor: pointer; white-space: nowrap; margin-right: 10px; margin-left: 10px;">Gestión de Proyectos</a></li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+    }
 </nav>

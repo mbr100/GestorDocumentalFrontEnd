@@ -54,7 +54,6 @@ export class AuthService {
 
     // Inicia sesión en el backend y guarda el token
     public login(nombre: string, password: string): Promise<Usuario> {
-        console.log('Login');
         return new Promise((resolve, reject): void => {
             this.http.post<AuthenticationResponse>(`${this.baseUrl}/${this.apiAuth}/authenticate`, { nombre, password }).subscribe({
                 next: (data: AuthenticationResponse) => {
