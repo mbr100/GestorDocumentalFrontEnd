@@ -3,8 +3,6 @@ import {Router, RouterLink} from '@angular/router';
 import {AuthService} from '../../services/authService.service';
 import {Usuario} from '../../models/usuario.model';
 
-declare var bootstrap: any; // Importación para usar Bootstrap
-
 @Component({
   selector: 'app-cabecero',
   standalone: true,
@@ -35,15 +33,6 @@ export class CabeceroComponent {
         this.router.navigateByUrl('/mantenimientos/proyectos').then(r => console.log('irGestionRoles', r));
     }
 
-    public cerrarMenuDropdown(): void {
-        // Busca el dropdown abierto y lo cierra
-        const dropdown = document.querySelector('#proyectosDesplegable');
-        const instance = bootstrap.Dropdown.getInstance(dropdown);
-        if (instance) {
-            instance.hide();
-        }
-    }
-
     public cargarUsuario(): void {
         this.authService.usuario$.subscribe((usuario) => {
             this.user = usuario!;
@@ -51,7 +40,6 @@ export class CabeceroComponent {
     }
 
     public puedeAdministrar(): boolean {
-        console.log(this.user?.rol);
         return this.user?.rol === "Administrador";
     }
 }

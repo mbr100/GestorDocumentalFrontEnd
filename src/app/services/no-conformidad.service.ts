@@ -34,7 +34,7 @@ export class NoConformidadService {
         });
     }
 
-    crearNoConformidad(idProyecto: string, tipo: string) {
+    public crearNoConformidad(idProyecto: string, tipo: string): Observable<any> {
         return this.httpClient.post(`${this.baseUrl}/${this.apiNcs}/crearNoConformidad`, {
             idProyecto,
             tipo

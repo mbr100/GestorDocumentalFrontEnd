@@ -15,14 +15,9 @@ import Swal from 'sweetalert2';
 })
 export class ListarProyectosComponent implements OnInit {
     public listaProyectos: ListarProyectoEmpleado[];
-    private user: Usuario | undefined;
 
     public constructor(private proyectosService: ProyectosService, private usuarioService: AuthService, private router: Router) {
         this.listaProyectos = [];
-        this.usuarioService.usuario$.subscribe((usuario) => {
-            console.log(usuario);
-            this.user = usuario!;
-        });
     }
 
     public ngOnInit(): void {

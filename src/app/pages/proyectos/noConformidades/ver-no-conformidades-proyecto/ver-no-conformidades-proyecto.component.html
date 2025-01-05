@@ -7,15 +7,15 @@
                 <h5 class="text-nowrap ">No Conformidades Abiertas</h5>
                 @if (abiertas.length > 0) {
                     <div>
-                        @for (nc of abiertas; track nc) {
+                        @for (nc of abiertas; track nc; let i = $index) {
                             <div class="mb-2">
                                 @if (nc.id === idNoConformidad) {
                                     <button class="btn btn-rounded btn-primary w-100 text-center" (click)="seleccionarNoConformidad(nc.id)">
-                                        {{nc.tipoNc}}_{{nc.id}}
+                                        {{nc.tipoNc}}_{{i+1}}
                                     </button>
                                 } @else {
                                     <button class="btn btn-rounded btn-outline-primary w-100 text-center" (click)="seleccionarNoConformidad(nc.id)">
-                                        {{nc.tipoNc}}_{{nc.id}}
+                                        {{nc.tipoNc}}_{{i+1}}
                                     </button>
                                 }
                             </div>
@@ -28,16 +28,17 @@
                 @if (cerradas.length > 0) {
                     <h5 class="text-nowrap text-center">No Conformidades Cerradas</h5>
                     <div>
-                        @for (nc of cerradas; track nc) {
+                        @for (nc of cerradas; track nc.id; let i = $index) {
 
                             <div class="mb-2">
                                 @if (nc.id === idNoConformidad) {
                                     <button class="btn btn-rounded btn-secondary w-100 text-center" (click)="seleccionarNoConformidad(nc.id)">
-                                        {{nc.tipoNc}}_{{nc.id}}
+                                        {{nc.tipoNc}}_{{i+1}}
                                     </button>
                                 } @else {
                                     <button class="btn btn-rounded btn-outline-secondary w-100 text-center" (click)="seleccionarNoConformidad(nc.id)">
-                                        {{nc.tipoNc}}_{{nc.id}}
+                                        {{nc.tipoNc}}_{{i+1}}
+
                                     </button>
                                 }
                             </div>
@@ -48,7 +49,7 @@
 
                 <h5 class="text-nowrap ">Abrir Nc</h5>
                 <div>
-                    <button class="btn btn-rounded btn-outline-primary w-100 text-center" data-toggle="modal" data-target="#nuevaNcModal">
+                    <button class="btn btn-rounded btn-outline-primary w-100 text-center" data-bs-toggle="modal" data-bs-target="#nuevaNcModal">
                         Nueva NC
                     </button>
                 </div>
