@@ -1,59 +1,44 @@
-# GestorDocumentalFrontEnd
+# Gestor Documental de Proyectos de Deducciones de I+D+i
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+Este proyecto es un cliente desarrollado con Angular 19.0.5 que forma parte de un sistema de gestión documental para proyectos de deducciones de I+D+i. Permite a los usuarios conectarse a un backend para realizar diversas tareas relacionadas con la gestión de archivos y la resolución de no conformidades.
 
-## Development server
+## Características
 
-To start a local development server, run:
+- **Gestión Documental**: Permite compartir y organizar archivos entre usuarios.
+- **Resolución de No Conformidades (NC)**:
+    - Responder no conformidades generadas por gestores de proyecto, contables, comités, expertos 4D o técnicos.
+    - Gestión dinámica de estados de las no conformidades hasta su cierre.
+- **Integración con el Backend**: Comunicación eficiente con el servidor para gestionar archivos y datos.
+- **Interfaz Dinámica**: Actualización en tiempo real de la estructura de carpetas y archivos.
 
-```bash
-ng serve
-```
+## Tecnologías Utilizadas
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- ![Angular](https://img.shields.io/badge/-Angular-DD0031?style=flat&logo=angular&logoColor=white) Angular 19.0.5 
+- ![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white) Bootstrap (para estilos)
+- ![Font Awesome](https://img.shields.io/badge/-Font%20Awesome-339AF0?style=flat&logo=fontawesome&logoColor=white) Font Awesome (para iconos)
+- ![NgxEditor](https://img.shields.io/badge/-NgxEditor-0081CB?style=flat&logo=angular&logoColor=white) NgxEditor (para texto enriquecido)
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Requisitos Previos
 
-```bash
-ng generate component component-name
-```
+Asegúrate de tener instalados los siguientes componentes antes de comenzar:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Node.js (versión 16 o superior)
+- Angular CLI (versión 15 o superior)
+- Git (opcional, para clonar el repositorio)
 
-```bash
-ng generate --help
-```
+## Instalación
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Clonar el repositorio**:
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   cd <NOMBRE_DEL_PROYECTO>
+    ```
+2. **Instalar dependencias**:
+    ```bash
+    npm install
+    ```
+3. **Ejecutar la aplicación**:
+   ```bash
+   ng serve
+   ```

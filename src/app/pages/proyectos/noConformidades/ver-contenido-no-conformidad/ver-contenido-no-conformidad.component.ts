@@ -6,6 +6,8 @@ import {NgClass} from '@angular/common';
 import {NoConformidadService} from '../../../../services/no-conformidad.service';
 import Swal from 'sweetalert2';
 import {constantes} from '../../../../../environments/environment';
+import {Usuario} from '../../../../models/usuario.model';
+import {AuthService} from '../../../../services/authService.service';
 
 @Component({
   selector: 'app-ver-contenido-no-conformidad',
@@ -25,8 +27,10 @@ export class VerContenidoNoConformidadComponent implements OnInit,OnDestroy {
     public respuestaNoConformidad: string;
     public toolbar: Toolbar;
     protected estadoCerrada: string;
+    public usuario: Usuario | null;
+    public rolCliente = constantes.ROL_CLIENTE;
 
-    constructor(private noConformidadService: NoConformidadService) {
+    constructor(private noConformidadService: NoConformidadService, private Auth: AuthService) {
         this.editor = new Editor({
             history: true,
             keyboardShortcuts: true,
@@ -42,6 +46,7 @@ export class VerContenidoNoConformidadComponent implements OnInit,OnDestroy {
         ];
         this.respuestaNoConformidad = '';
         this.estadoCerrada = constantes.ESTADO_CERRADA;
+        this.usuario = this.Auth.getUsuario();
     }
 
     ngOnInit(): void {
@@ -77,7 +82,8 @@ export class VerContenidoNoConformidadComponent implements OnInit,OnDestroy {
             next: () => {
                 this.puntoNCRespondido.emit(true);
             },
-            error: () => {
+            error: err => {
+                console.log(err);
                 Swal.fire({
                     icon: 'error',
                     title: 'Error al responder la no conformidad',
