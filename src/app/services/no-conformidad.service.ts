@@ -22,7 +22,7 @@ export class NoConformidadService {
     }
 
     public cerrarPuntoNoConformidad(idPuntoNoConformidad: number): Observable<any> {
-        return this.httpClient.get(`${this.baseUrl}/${this.apiNcs}/cerrarPuntoNc/${idPuntoNoConformidad}`);
+        return this.httpClient.put(`${this.baseUrl}/${this.apiNcs}/cerrarPuntoNc/${idPuntoNoConformidad}`, {});
     }
 
 

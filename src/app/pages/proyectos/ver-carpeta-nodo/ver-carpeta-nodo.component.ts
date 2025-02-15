@@ -3,6 +3,7 @@ import {NgClass} from '@angular/common';
 import {DocumentosService} from '../../../services/documentos.service';
 import Swal from 'sweetalert2';
 import {RecargarCarperaDocumentoService} from '../../../services/recargar-carpera-documento.service';
+import {AuthService} from '../../../services/authService.service';
 
 @Component({
   selector: 'app-ver-carpeta-nodo',
@@ -23,10 +24,13 @@ export class VerCarpetaNodoComponent {
 
     public isDragOver: boolean;
 
-    public constructor(private documentosService: DocumentosService, private recargar: RecargarCarperaDocumentoService) {
+    public gestionarDocumento: boolean;
+
+    public constructor(private documentosService: DocumentosService, private recargar: RecargarCarperaDocumentoService, private authService: AuthService) {
         this.isDragOver = false; // Inicializa isDragOver en false
         this.idProyecto = '';
         this.nombreCarpetaAlojada = '';
+        this.gestionarDocumento = authService.isGestor();
     }
 
     public onDragOver(event: DragEvent): void {

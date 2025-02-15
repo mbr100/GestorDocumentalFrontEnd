@@ -8,7 +8,6 @@ import {Usuario} from '../../models/usuario.model';
   standalone: true,
     imports: [
         RouterLink
-
     ],
   templateUrl: './cabecero.component.html',
   styleUrl: './cabecero.component.css'

@@ -14,7 +14,7 @@ export class AuthService {
     private baseUrl: string = environment.apiUrl;
     private apiAuth: string = environment.apiAuth;
 
-    private readonly tokenKey = 'authToken';
+    private readonly tokenKey: string = 'authToken';
     public usuarioSubject = new BehaviorSubject<Usuario | null>(null);
     public usuario$ = this.usuarioSubject.asObservable();
     private token: string | null = null;
@@ -22,6 +22,7 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) {
         this.initAuthState();
+
     }
 
     // Inicializa el estado de autenticación al cargar la app
@@ -63,14 +64,19 @@ export class AuthService {
                         auth: true,
                         idUsuario: decodedToken.idUsuario,
                         nombre: decodedToken.sub,
-                        rol: decodedToken.roles || '',
+                        rol: decodedToken.rol || '',
                         email: decodedToken.email
                     }
+                    console.log('Usuario autenticado:', this.user);
                     this.router.navigate(['/']).then(() => resolve(this.user!));
                 },
                 error: (err) => {
                     console.error(err);
                     reject(false);
+                },
+                complete: () => {
+                    console.log('Petición de login completada');
+                    console.log(' es gesot' +this.isGestor());
                 }
             });
         });
@@ -137,6 +143,10 @@ export class AuthService {
     // Obtiene los datos del usuario actual
     public getUsuario(): Usuario | null {
         return this.usuarioSubject.value;
+    }
+
+    public isGestor(): boolean {
+        return this.usuarioSubject.value?.rol != 'Cliente';
     }
 
 }

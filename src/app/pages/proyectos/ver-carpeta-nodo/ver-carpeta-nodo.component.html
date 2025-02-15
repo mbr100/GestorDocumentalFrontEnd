@@ -5,14 +5,16 @@
     @if (nodo.tipo === 'fichero') {
         <div class="file">
             {{ nodo.nombre }}
-            <div class="button-container">
-                <button class="btn btn-outline-success round-button" (click)="aceptarDocumento(nodo)">
-                    <i class="fas fa-check"></i>
-                </button>
-                <button class="btn btn-outline-danger round-button" (click)="rechazarDocumento(nodo)">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+            @if (this.gestionarDocumento){
+                <div class="button-container">
+                    <button class="btn btn-outline-success round-button" (click)="aceptarDocumento(nodo)">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="btn btn-outline-danger round-button" (click)="rechazarDocumento(nodo)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            }
         </div>
 
     }

@@ -11,7 +11,8 @@ export const environment = {
 
 export const constantes = {
     ESTADO_ABIERTA: 'ABIERTA',
-    ESTADO_CERRADA: 'CERRADA'
+    ESTADO_CERRADA: 'CERRADA',
+    ROL_CLIENTE: "Cliente"
 }
 
 export const tiposNoConformidad: string[] = ["GP", "Contable", "Comite", "ExpertoTecnico", "Experto4D"]
