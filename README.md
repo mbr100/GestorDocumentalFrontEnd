@@ -27,18 +27,49 @@ Asegúrate de tener instalados los siguientes componentes antes de comenzar:
 - Angular CLI (versión 15 o superior)
 - Git (opcional, para clonar el repositorio)
 
+Tambien debes de tener el backend de la aplicación corriendo en tu máquina local. Puedes encontrar el repositorio del backend [aquí](https://github.com/mbr100/GestorDocumentalBackEnd).
+
 ## Instalación
 
-1. **Clonar el repositorio**:
-   ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   cd <NOMBRE_DEL_PROYECTO>
-    ```
-2. **Instalar dependencias**:
-    ```bash
-    npm install
-    ```
-3. **Ejecutar la aplicación**:
-   ```bash
-   ng serve
-   ```
+1. Clona el repositorio en tu máquina local:
+```bash
+  git clone https://github.com/mbr100/GestorDocumentalFrontEnd.git 
+```
+2. Navega a la carpeta del proyecto:
+```bash
+  cd GestorDocumentalFrontEnd
+```
+3. Instala las dependencias del proyecto:
+```bash
+  npm install
+```
+4. Inicia el servidor de desarrollo:
+```bash
+  ng serve
+```
+5. Abre tu navegador y navega a `http://localhost:4200/` para ver la aplicación en funcionamiento.
+6. Para acceder a la aplicación, utiliza las siguientes credenciales:
+```bash
+  Usuario: GP@ejemplo.com
+  Contraseña: 1234
+```
+6.1 Para mas usuarios consulta el archivo DataLoaderExample en el backend.
+
+## Uso
+El proyecto cuenta con las siguientes funcionalidades:
+- Gestion de Proyectos, Usuarios y Roles 
+- Asignación de usuarios a proyectos
+- Creacion de estructura de carpetas y subcarpetas
+- Subida de archivos
+- Aceptacion o Rechazo de archivos
+- Resolución de no conformidades
+- Comentarios en no conformidades
+- Cambio de estados de no conformidades
+- Visualización de archivos
+- Descarga de archivos
+
+## Autores
+El proyecto esta integramente desarrollado por Mario Borrego
+
+## Copyright and license
+El código fuente de este proyecto es de código abierto y está disponible bajo la [Licencia MIT](https://opensource.org/licenses/MIT).
