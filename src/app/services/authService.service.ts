@@ -84,14 +84,24 @@ export class AuthService {
 
     // Cierra sesión
     public logout(): void {
-        this.clearToken();
-        this.usuarioSubject.next(null);
-        this.router.navigate(['/login']).then();
+        this.http.post(`${this.baseUrl}/${this.apiAuth}/logout`, {}).subscribe({
+            next: () => {
+                console.log('Sesión cerrada');
+            },
+            error: (err) => {
+                console.error('Error al cerrar la sesión:', err);
+            },
+            complete: () => {
+                this.clearToken();
+                this.usuarioSubject.next(null);
+                this.router.navigate(['/login']).then();
+            }
+        });
     }
 
     // Carga el token en el servicio y genera el objeto Usuario
     private setToken(token: string): void {this.token = token;
-        sessionStorage.setItem(this.tokenKey, token); // Cambiado a sessionStorage
+        localStorage.setItem(this.tokenKey, token);
         const decodedToken = this.decodeToken(token);
         if (decodedToken) {
             this.usuarioSubject.next({
@@ -111,12 +121,12 @@ export class AuthService {
     // Borra el token del almacenamiento
     private clearToken(): void {
         this.token = null;
-        sessionStorage.removeItem(this.tokenKey); // Cambiado a sessionStorage
+        localStorage.removeItem(this.tokenKey); // Cambiado a sessionStorage
     }
 
     // Obtiene el token desde el sessionStorage
     private getTokenFromStorage(): string | null {
-        return sessionStorage.getItem(this.tokenKey);
+        return localStorage.getItem(this.tokenKey);
     }
 
     // Valida el token con el backend
@@ -135,12 +145,6 @@ export class AuthService {
         }
     }
 
-    // Verifica si el usuario está autenticado
-    // public isAuthenticated(): boolean {
-    //     return !!this.token;
-    // }
-
-    // Obtiene los datos del usuario actual
     public getUsuario(): Usuario | null {
         return this.usuarioSubject.value;
     }
