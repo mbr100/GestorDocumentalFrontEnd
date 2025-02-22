@@ -2,7 +2,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand ms-3" routerLink="/" aria-label="Home" style="cursor: pointer;" >
+    <a class="navbar-brand ms-3" routerLink="/" aria-label="Home" style="cursor: pointer;">
         <div class="row">
             <h1 class="ms-2" style="color: white">
                 <img src="favicon.ico" alt="logo" height="50" width="50"> Gestor Documental
@@ -25,4 +25,11 @@
             </ul>
         </div>
     }
+    <!-- Botón Logout alineado a la derecha -->
+    <div class="ms-auto">
+        <button class="btn btn-dark " data-bs-toggle="dropdown" aria-expanded="false" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </div>
 </nav>
+

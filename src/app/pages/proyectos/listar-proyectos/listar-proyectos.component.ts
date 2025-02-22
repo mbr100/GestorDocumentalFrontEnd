@@ -3,7 +3,6 @@ import { ListarProyectoEmpleado } from '../../../models/proyecto.model';
 import { ProyectosService } from '../../../services/proyectos.service';
 import { AuthService } from '../../../services/authService.service';
 import { Router } from '@angular/router';
-import {Usuario} from '../../../models/usuario.model';
 import Swal from 'sweetalert2';
 
 @Component({

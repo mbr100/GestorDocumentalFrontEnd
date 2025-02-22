@@ -41,4 +41,9 @@ export class CabeceroComponent {
     public puedeAdministrar(): boolean {
         return this.user?.rol === "Administrador";
     }
+
+    public logout(): void {
+        this.authService.logout();
+        this.router.navigateByUrl('/login').then(r => console.log('logout', r));
+    }
 }
