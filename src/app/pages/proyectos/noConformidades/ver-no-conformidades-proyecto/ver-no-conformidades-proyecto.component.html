@@ -46,13 +46,15 @@
                         }
                     </div>
                 }
+                @if (this.usuario?.rol != "Cliente") {
+                    <h5 class="text-nowrap ">Abrir Nc</h5>
+                    <div>
+                        <button class="btn btn-rounded btn-outline-primary w-100 text-center" data-bs-toggle="modal" data-bs-target="#nuevaNcModal">
+                            Nueva NC
+                        </button>
+                    </div>
+                }
 
-                <h5 class="text-nowrap ">Abrir Nc</h5>
-                <div>
-                    <button class="btn btn-rounded btn-outline-primary w-100 text-center" data-bs-toggle="modal" data-bs-target="#nuevaNcModal">
-                        Nueva NC
-                    </button>
-                </div>
             </div>
             <!-- Barra separadora -->
 
@@ -63,11 +65,13 @@
                         <app-ver-punto-no-conformidad [puntoNc]="puntonc" [indice]="i" (puntoNoConformidadSeleccionado)="verPuntoNoConfomidad($event)"></app-ver-punto-no-conformidad>
                     }
                     <br>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-rounded btn-outline-primary" (click)="abrirPuntoNC()" >Nuevo Punto NC</button>
+                    @if (this.usuario?.rol != "Cliente") {
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-rounded btn-outline-primary" (click)="abrirPuntoNC()" >Nuevo Punto NC</button>
+                            </div>
                         </div>
-                    </div>
+                    }
 
                 } @else {
                     <p class="text-center">Seleccione una No Conformidad para ver su detalle.</p>

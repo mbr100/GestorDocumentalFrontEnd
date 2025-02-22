@@ -6,6 +6,9 @@ import { VerPuntoNoConformidadComponent } from '../ver-punto-no-conformidad/ver-
 import { VerContenidoNoConformidadComponent } from '../ver-contenido-no-conformidad/ver-contenido-no-conformidad.component';
 import { constantes, tiposNoConformidad } from '../../../../../environments/environment';
 import { CrearPuntoNoConformidadComponent } from '../crear-punto-no-conformidad/crear-punto-no-conformidad.component';
+import {AuthService} from '../../../../services/authService.service';
+import {Usuario} from '../../../../models/usuario.model';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -34,10 +37,11 @@ export class VerNoConformidadesProyectoComponent implements OnInit {
     public verContenidoNC: PuntosNoConformidadDto | null;
     public nuevoPuntoNC: boolean;
     public tiposNc: string[];
+    public usuario: Usuario | null | undefined;
 
     @ViewChild('nuevaNcModal', { static: true }) nuevaNcModal!: ElementRef;
 
-    public constructor(private route: ActivatedRoute, private noConformidadService: NoConformidadService) {
+    public constructor(private route: ActivatedRoute, private noConformidadService: NoConformidadService, private authService: AuthService) {
         this.idProyecto = this.route.snapshot.paramMap.get('idProyecto') || '';
         this.ncSeleccionada = false;
         this.noConformidades =[]
@@ -49,6 +53,12 @@ export class VerNoConformidadesProyectoComponent implements OnInit {
         this.verContenidoNC = null;
         this.nuevoPuntoNC = false;
         this.tiposNc = tiposNoConformidad;
+        this.authService.usuario$.subscribe({
+            next: (usuario) => {
+                this.usuario = usuario;
+                console.log(this.usuario)
+            }
+        })
     }
 
     public ngOnInit(): void {

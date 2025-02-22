@@ -41,7 +41,9 @@ export class AuthService {
                     },
                     error: (err) => {
                         console.error('Error al validar el token:', err);
-                        this.logout();
+                        this.clearToken();
+                        this.usuarioSubject.next(null);
+                        this.router.navigate(['/login']).then();
                     },
                     complete: () => {
                         console.log('Validación del token completada');
@@ -72,6 +74,7 @@ export class AuthService {
                 },
                 error: (err) => {
                     console.error(err);
+                    this.clearToken();
                     reject(false);
                 },
                 complete: () => {
