@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { NoConformidadService } from '../../../../services/no-conformidad.service';
 import { NoConformidadDto, PuntosNoConformidadDto } from '../../../../models/noConformidad.model';
 import { VerPuntoNoConformidadComponent } from '../ver-punto-no-conformidad/ver-punto-no-conformidad.component';
@@ -8,7 +8,6 @@ import { constantes, tiposNoConformidad } from '../../../../../environments/envi
 import { CrearPuntoNoConformidadComponent } from '../crear-punto-no-conformidad/crear-punto-no-conformidad.component';
 import {AuthService} from '../../../../services/authService.service';
 import {Usuario} from '../../../../models/usuario.model';
-import {Observable} from 'rxjs';
 
 
 @Component({
@@ -41,7 +40,7 @@ export class VerNoConformidadesProyectoComponent implements OnInit {
 
     @ViewChild('nuevaNcModal', { static: true }) nuevaNcModal!: ElementRef;
 
-    public constructor(private route: ActivatedRoute, private noConformidadService: NoConformidadService, private authService: AuthService) {
+    public constructor(private route: ActivatedRoute, private noConformidadService: NoConformidadService, private authService: AuthService, private router: Router) {
         this.idProyecto = this.route.snapshot.paramMap.get('idProyecto') || '';
         this.ncSeleccionada = false;
         this.noConformidades =[]
@@ -159,5 +158,9 @@ export class VerNoConformidadesProyectoComponent implements OnInit {
         document.body.classList.remove('modal-open');
         const backdrop = document.querySelector('.modal-backdrop');
         if (backdrop) backdrop.remove();
+    }
+
+    public volverDocumentosProyecto() {
+        this.router.navigate(['/proyectos', this.idProyecto, 'documentos']).then();
     }
 }

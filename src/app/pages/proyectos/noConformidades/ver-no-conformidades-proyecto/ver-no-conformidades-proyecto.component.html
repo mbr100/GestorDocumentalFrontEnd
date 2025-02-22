@@ -1,6 +1,18 @@
 @if (!nuevoPuntoNC) {
     @if (puntoNoConformidadSeleccionado === 0){
         <div class="row">
+            <div class="container-fluid animate__animated animate__slideInDown">
+                <div class="row bg-light-primary p-3">
+                    <div class="col-6">
+                        <h1 class="text-dark">Proyecto: {{ idProyecto }}</h1>
+                    </div>
+                    <div class="col-6 d-flex align-items-center justify-content-end">
+                        <button class="btn btn-rounded btn-outline-inverse" (click)="volverDocumentosProyecto()" >Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <!-- Apartado de No Conformidades Abiertas -->
             <div class="col-2 pe-3 custom-border text-nowrap">
 
