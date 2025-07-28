@@ -3,7 +3,7 @@
         <div (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">{{ nodo.nombre }}</div>
     }
     @if (nodo.tipo === 'fichero') {
-        <div class="file">
+        <div class="file" (click)="descargarArchivo(nodo)">
             {{ nodo.nombre }}
             @if (this.gestionarDocumento){
                 <div class="button-container">
@@ -20,7 +20,7 @@
     }
     @if (nodo.hijos && nodo.hijos.length > 0){
         @for ( hijo of nodo.hijos; track hijo){
-            <app-ver-carpeta-nodo [nodo]="hijo" [idProyecto]="idProyecto" [nombreCarpetaAlojada]="nodo.nombre"></app-ver-carpeta-nodo>
+            <app-ver-carpeta-nodo [nodo]="hijo" [idProyecto]="idProyecto" [nombreCarpetaAlojada]="nodo.nombre" [rutaPadre]="rutaCompleta"></app-ver-carpeta-nodo>
         }
     }
 </div>
